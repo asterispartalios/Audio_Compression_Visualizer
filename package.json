@@ -1,0 +1,51 @@
+{
+  "name": "audio-compression-visualizer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Offline audio compressor visualization with analog-style controls",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win portable --x64",
+    "build:mac:arm": "electron-builder --mac zip --arm64",
+    "build:mac:intel": "electron-builder --mac zip --x64"
+  },
+  "devDependencies": {
+    "electron": "33.4.11",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "eu.partalios.audiocompressionvisualizer",
+    "productName": "Audio Compression Visualizer",
+    "asar": true,
+    "files": [
+      "index.html",
+      "style.css",
+      "script.js",
+      "knobs.js",
+      "main.cjs",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Audio-Compression-Visualizer-Windows-Portable-${arch}.${ext}"
+    },
+    "mac": {
+      "target": [
+        "zip"
+      ],
+      "category": "public.app-category.education",
+      "artifactName": "Audio-Compression-Visualizer-macOS-${arch}.${ext}"
+    }
+  }
+}
